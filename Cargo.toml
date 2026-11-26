@@ -1,25 +1,33 @@
 [package]
-name = "brok-shard-template"
+name = "brok-obsidian"
 version = "0.1.0"
 edition = "2024"
-rust-version = "1.88"
-description = "Template for building Brokspace shards: reports TODO/FIXME/HACK markers in changed files"
+rust-version = "1.89"
+description = "Brokspace shard that mirrors a remote Obsidian vault into a local, read-only copy you can search"
 license = "MIT OR Apache-2.0"
-repository = "https://github.com/brokspace/brok-shard-template"
+repository = "https://github.com/brokspace/brok-obsidian"
 readme = "README.md"
-keywords = ["brokspace", "shard", "template"]
+keywords = ["brokspace", "shard", "obsidian"]
 categories = ["development-tools"]
 
 [dependencies]
 anyhow = "1.0"
-brok-sdk = "0.1.1"
+brok-sdk = "0.3"
+futures-util = { version = "0.3", default-features = false }
+globset = "0.4"
+percent-encoding = "2.3"
+reqwest = { version = "0.13", default-features = false, features = ["rustls", "stream", "json"] }
 serde = { version = "1.0", features = ["derive"] }
-tokio = { version = "1.47", features = ["macros", "rt-multi-thread", "signal"] }
+serde_json = "1.0"
+tokio = { version = "1.47", features = ["macros", "rt-multi-thread", "signal", "time", "fs"] }
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
 
 [dev-dependencies]
+rcgen = "0.14"
 tempfile = "3.20"
+tokio = { version = "1.47", features = ["net", "io-util"] }
+tokio-rustls = { version = "0.26", default-features = false, features = ["ring", "tls12"] }
 
 [lints.rust]
 unsafe_code = "forbid"

@@ -10,6 +10,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 ### Added
 
-- Example shard that subscribes to `file:changed` and publishes `todo:found` for every TODO, FIXME and
-  HACK marker found in changed files.
-- Minimal-permission `shard.json`, CI and release workflows that print the `releases` block for the manifest.
+- Mirrors an Obsidian vault served by the Local REST API plugin into
+  `.brokspace/shards-data/brok-obsidian/vault`, read only (`GET` requests over HTTPS verified against the
+  plugin's certificate authority), at start, on an interval and on `obsidian:sync`, publishing
+  `obsidian:synced` (brokspace/brok#104).
