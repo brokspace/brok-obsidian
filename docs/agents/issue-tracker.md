@@ -1,16 +1,16 @@
 # Issue Tracker
 
-This repository tracks work in **GitHub Issues** on [`brokspace/brok-shard-template`](https://github.com/brokspace/brok-shard-template/issues). Skills that read or write issues (`/triage`, `/to-spec`, `/to-tickets`, `/implement`) use the GitHub CLI.
+This repository tracks work in **GitHub Issues** on [`brokspace/brok-obsidian`](https://github.com/brokspace/brok-obsidian/issues). Skills that read or write issues (`/triage`, `/to-spec`, `/to-tickets`, `/implement`) use the GitHub CLI.
 
 ## Everyday commands
 
 ```sh
-gh issue list --repo brokspace/brok-shard-template --label needs-triage           # the triage queue
-gh issue list --repo brokspace/brok-shard-template --label ready-for-agent        # work an agent can pick up
-gh issue view 42 --repo brokspace/brok-shard-template --comments
-gh issue create --repo brokspace/brok-shard-template --title "..." --body-file spec.md --label enhancement --label needs-triage
-gh issue edit 42 --repo brokspace/brok-shard-template --remove-label needs-triage --add-label ready-for-agent
-gh issue close 42 --repo brokspace/brok-shard-template --reason "not planned" --comment "..."
+gh issue list --repo brokspace/brok-obsidian --label needs-triage           # the triage queue
+gh issue list --repo brokspace/brok-obsidian --label ready-for-agent        # work an agent can pick up
+gh issue view 42 --repo brokspace/brok-obsidian --comments
+gh issue create --repo brokspace/brok-obsidian --title "..." --body-file spec.md --label enhancement --label needs-triage
+gh issue edit 42 --repo brokspace/brok-obsidian --remove-label needs-triage --add-label ready-for-agent
+gh issue close 42 --repo brokspace/brok-obsidian --reason "not planned" --comment "..."
 ```
 
 Label strings come from [triage-labels.md](triage-labels.md).

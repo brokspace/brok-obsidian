@@ -1,24 +1,24 @@
 name: Idea or feedback
-description: Make the template easier to start from.
+description: Suggest an improvement to the shard.
 labels: ["enhancement", "needs-triage"]
 body:
   - type: markdown
     attributes:
       value: |
-        The template should stay minimal: one small working shard that teaches the moving parts. Bigger examples are welcome as their own shards.
+        Ideas are judged against the rules of ADR 0016 (read only, verified HTTPS, the key never stored).
         Ideas are judged against [`SCOPE.md`](https://github.com/brokspace/brok/blob/main/SCOPE.md).
   - type: checkboxes
     id: read-scope
     attributes:
       label: Before filing
       options:
-        - label: I've read `SCOPE.md` and this keeps the template small.
+        - label: I've read `SCOPE.md` and this keeps the shard read only and small.
           required: true
   - type: textarea
     id: problem
     attributes:
       label: What got in your way
-      description: What you were building from the template and where it slowed you down.
+      description: What you were doing with the shard and where it slowed you down.
     validations:
       required: true
   - type: textarea

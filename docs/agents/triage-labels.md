@@ -6,7 +6,7 @@ The Brokspace skills (`/triage`, `/to-tickets`, `/to-spec`, ...) speak in terms 
 
 An issue carries exactly one state role at a time.
 
-| Canonical role    | Label in brokspace/brok-shard-template | Meaning                                              |
+| Canonical role    | Label in brokspace/brok-obsidian | Meaning                                              |
 | ----------------- | ----------------------- | ---------------------------------------------------- |
 | `needs-triage`    | `needs-triage`          | A maintainer needs to evaluate this issue            |
 | `needs-info`      | `needs-info`            | Waiting on the reporter for more information         |
@@ -18,7 +18,7 @@ An issue carries exactly one state role at a time.
 
 An issue carries exactly one category role.
 
-| Canonical role | Label in brokspace/brok-shard-template | Meaning                          |
+| Canonical role | Label in brokspace/brok-obsidian | Meaning                          |
 | -------------- | ----------------------- | -------------------------------- |
 | `bug`          | `bug`                   | Something is broken              |
 | `enhancement`  | `enhancement`           | New capability or improvement    |

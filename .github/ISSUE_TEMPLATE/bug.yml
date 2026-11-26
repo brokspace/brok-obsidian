@@ -1,5 +1,5 @@
 name: Bug
-description: The template does not build, or a step in its README does not work.
+description: The shard does not build, sync or follow its README.
 labels: ["bug", "needs-triage"]
 body:
   - type: markdown

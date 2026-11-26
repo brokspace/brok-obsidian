@@ -7,5 +7,5 @@ contact_links:
     url: https://github.com/brokspace/brok/tree/main/docs
     about: Architecture, configuration, shards and skills guides.
   - name: Security vulnerability
-    url: https://github.com/brokspace/brok-shard-template/security/advisories/new
+    url: https://github.com/brokspace/brok-obsidian/security/advisories/new
     about: Report security issues privately, never in a public issue.
