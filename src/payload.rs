@@ -1,25 +1,51 @@
-//! Events this shard publishes.
-//!
-//! Define one struct per topic and bind it with [`Payload`]: the SDK then
-//! checks topics for you in `Event::from_payload` and `Event::decode`.
-//! Every topic you publish must be listed in `shard.json` `publishes_to`.
+//! The shard's events.
 
 use brok_sdk::Payload;
 use serde::{Deserialize, Serialize};
 
-/// A TODO / FIXME / HACK marker found in a changed file.
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
-pub struct TodoFound {
-    /// Workspace relative path (`/` separators).
-    pub path: String,
-    /// 1-based line number.
-    pub line: u32,
-    /// `TODO`, `FIXME` or `HACK`.
-    pub marker: String,
-    /// The note after the marker.
-    pub text: String,
+use crate::mirror::Report;
+
+/// Asks for a sync now.
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct SyncRequest {}
+
+impl Payload for SyncRequest {
+    const TOPIC: &'static str = "obsidian:sync";
 }
 
-impl Payload for TodoFound {
-    const TOPIC: &'static str = "todo:found";
+/// The result of a sync: counts, and why it failed if it did.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Synced {
+    pub ok: bool,
+    pub written: usize,
+    pub unchanged: usize,
+    pub removed: usize,
+    pub skipped: usize,
+    pub failed: usize,
+    pub complete: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub error: Option<String>,
+}
+
+impl Payload for Synced {
+    const TOPIC: &'static str = "obsidian:synced";
+}
+
+impl From<anyhow::Result<Report>> for Synced {
+    fn from(outcome: anyhow::Result<Report>) -> Self {
+        let (report, error) = match outcome {
+            Ok(report) => (report, None),
+            Err(e) => (Report::default(), Some(format!("{e:#}"))),
+        };
+        Self {
+            ok: error.is_none(),
+            written: report.written,
+            unchanged: report.unchanged,
+            removed: report.removed,
+            skipped: report.skipped,
+            failed: report.failed,
+            complete: report.complete,
+            error,
+        }
+    }
 }
