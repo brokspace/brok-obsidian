@@ -88,6 +88,21 @@ add in its settings. Prefer a private tunnel over opening the plugin to a networ
 Brokspace's shard sandbox is advisory: these limits are enforced by this shard's code and tests. The design and
 threat model are in [brok's ADR 0016](https://github.com/brokspace/brok/blob/staging/docs/adr/0016-remote-obsidian-vaults-by-mirroring.md).
 
+## Learn from this shard
+
+Writing your own shard? Start with [Write your first shard](https://github.com/brokspace/brok/blob/staging/docs/shard-tutorial.md);
+this one shows how to connect to a service outside the machine:
+
+| You want to | Look at |
+|---|---|
+| Declare network and environment permissions, and a folder you write to | `shard.json` |
+| Validate settings and refuse unsafe ones | `src/settings.rs` |
+| Call a service with a key that is never logged, trusting one certificate | `src/client.rs` |
+| Treat names from a server as hostile input | `src/names.rs` |
+| Run on a timer and on your own event | `src/main.rs`, `src/payload.rs` |
+| Keep local data correct when a run fails half way | `src/mirror.rs` |
+| Test against a fake server | `src/tests.rs` |
+
 ## Development
 
 ```sh
